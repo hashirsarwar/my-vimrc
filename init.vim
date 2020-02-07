@@ -47,6 +47,9 @@ command! Search Rg
 au BufRead,BufNewFile *.hbs setfiletype html
 au TermOpen * setlocal nonumber norelativenumber nocursorline nobuflisted
 let g:coc_global_extensions = [
+            \'coc-flow',
+            \'coc-json',
+            \'coc-prettier',
             \'coc-tsserver',
             \'coc-snippets',
             \'coc-eslint',
