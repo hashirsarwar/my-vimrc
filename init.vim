@@ -38,7 +38,6 @@ let g:airline_section_z = '%3p%% ☰  %l:%c'
 let g:airline_theme='ayu_dark'
 let g:airline_powerline_fonts = 1 " Make sure terminal fonts has powerline support.
 let g:airline_skip_empty_sections=1
-command! E Explore
 command! BD bp | bd #
 command! T 6sp|:terminal
 command! Search Rg
