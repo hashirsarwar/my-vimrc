@@ -1,7 +1,6 @@
 " NVIM v0.4.x required
 call plug#begin('~/.vim/plugged')
 Plug 'airblade/vim-gitgutter'
-Plug 'raimondi/delimitmate'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-fugitive'
@@ -11,6 +10,7 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
 Plug 'pangloss/vim-javascript'
 Plug 'gruvbox-community/gruvbox'
 Plug 'scrooloose/nerdtree'
+Plug 'kh3phr3n/python-syntax'
 call plug#end()
 let g:gruvbox_italic=1
 let g:gruvbox_contrast_dark = 'hard'
@@ -33,8 +33,6 @@ set splitbelow
 set clipboard=unnamedplus
 tnoremap jj <C-\><C-n>
 inoremap jj <ESC>
-let delimitMate_expand_cr = 1
-let delimitMate_expand_space = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_section_z = '%3p%% ☰  %l:%c'
 let g:airline_theme='ayu_dark'
@@ -97,3 +95,8 @@ autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 map <C-n> :NERDTreeToggle<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+" Automatically closing braces
+inoremap {<CR> {<CR>}<Esc>ko<tab>
+inoremap [<CR> [<CR>]<Esc>ko<tab>
+inoremap (<CR> (<CR>)<Esc>ko<tab>
+let python_highlight_all = 1
