@@ -9,7 +9,6 @@ Plug 'junegunn/fzf.vim' " Requires ripgrep to search content in files
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
 Plug 'pangloss/vim-javascript'
 Plug 'gruvbox-community/gruvbox'
-Plug 'scrooloose/nerdtree'
 Plug 'kh3phr3n/python-syntax'
 call plug#end()
 let g:gruvbox_italic=1
@@ -33,6 +32,7 @@ set splitbelow
 set clipboard=unnamedplus
 tnoremap jj <C-\><C-n>
 inoremap jj <ESC>
+map <C-p> :Files<CR>
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_section_z = '%3p%% ☰  %l:%c'
 let g:airline_theme='ayu_dark'
@@ -90,11 +90,8 @@ endfunction
 command! PrevTerminal execute 'buffer ' . buf#previous('&buftype == "terminal"')
 command! NextTerminal execute 'buffer ' . buf#next('&buftype == "terminal"')
 cnoreabbrev tn NextTerminal
-cnoreabbrev tp PrevTerminal
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
-map <C-n> :NERDTreeToggle<CR>
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+cnoreabbrev tp PrevTerminal) == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
 " Automatically closing braces
 inoremap {<CR> {<CR>}<Esc>ko<tab>
 inoremap [<CR> [<CR>]<Esc>ko<tab>
