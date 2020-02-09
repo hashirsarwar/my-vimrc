@@ -1,5 +1,5 @@
 " NVIM v0.4.x required
-call plug#begin('~/.vim/plugged')
+call plug#begin()
 Plug 'airblade/vim-gitgutter'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
