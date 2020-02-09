@@ -32,7 +32,7 @@ set splitbelow
 set clipboard=unnamedplus
 tnoremap jj <C-\><C-n>
 inoremap jj <ESC>
-map <C-p> :Files<CR>
+noremap <C-p> <esc>:Files<CR>
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_section_z = '%3p%% ☰  %l:%c'
 let g:airline_theme='ayu_dark'
