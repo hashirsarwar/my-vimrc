@@ -1,15 +1,15 @@
 " NVIM v0.4.x required
 call plug#begin()
 Plug 'airblade/vim-gitgutter'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+Plug 'ap/vim-buftabline'
 Plug 'tpope/vim-fugitive'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'junegunn/fzf.vim' " Requires ripgrep to search content in files
+" Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'shougo/deoplete.nvim'
+Plug 'junegunn/fzf.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
 Plug 'pangloss/vim-javascript'
-Plug 'gruvbox-community/gruvbox'
 Plug 'kh3phr3n/python-syntax'
+Plug 'gruvbox-community/gruvbox'
 call plug#end()
 let g:gruvbox_italic=1
 let g:gruvbox_contrast_dark = 'hard'
@@ -33,26 +33,22 @@ set clipboard=unnamedplus
 tnoremap jj <C-\><C-n>
 inoremap jj <ESC>
 noremap <C-p> <esc>:Files<CR>
-let g:airline#extensions#tabline#enabled = 1
-let g:airline_section_z = '%3p%% ☰  %l:%c'
-let g:airline_theme='ayu_dark'
-let g:airline_powerline_fonts = 1 " Make sure terminal fonts has powerline support.
-let g:airline_skip_empty_sections=1
+noremap <C-n> <esc>:15Lexplore<CR>
+command! E Explore
 command! BD bp | bd #
 command! T 6sp|:terminal
-command! Search Rg
 au BufRead,BufNewFile *.hbs setfiletype html
 au TermOpen * setlocal nonumber norelativenumber nocursorline nobuflisted
-let g:coc_global_extensions = [
-            \'coc-flow',
-            \'coc-json',
-            \'coc-prettier',
-            \'coc-tsserver',
-            \'coc-snippets',
-            \'coc-eslint',
-            \'coc-python',
-            \]
-" Install jedi, eslint
+"let g:coc_global_extensions = [
+"            \'coc-flow',
+"            \'coc-json',
+"            \'coc-prettier',
+"            \'coc-tsserver',
+"            \'coc-snippets',
+"            \'coc-eslint',
+"            \'coc-python',
+"            \]
+" Install eslint
 let $FZF_DEFAULT_OPTS='--layout=reverse'
 let g:fzf_layout = { 'window': 'call CreateCenteredFloatingWindow()' }
 function! CreateCenteredFloatingWindow()
@@ -76,23 +72,19 @@ function! CreateCenteredFloatingWindow()
     call nvim_open_win(nvim_create_buf(v:false, v:true), v:true, opts)
     au BufWipeout <buffer> exe 'bw '.s:buf
 endfunction
-
-nnoremap <silent> K :call <SID>show_documentation()<CR>
-function! s:show_documentation()
-    if (index(['vim','help'], &filetype) >= 0)
-        execute 'h '.expand('<cword>')
-    else
-        call CocAction('doHover')
-    endif
-endfunction
-
-command! PrevTerminal execute 'buffer ' . buf#previous('&buftype == "terminal"')
-command! NextTerminal execute 'buffer ' . buf#next('&buftype == "terminal"')
-cnoreabbrev tn NextTerminal
-cnoreabbrev tp PrevTerminal) == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-
+"nnoremap <silent> K :call <SID>show_documentation()<CR>
+"function! s:show_documentation()
+"    if (index(['vim','help'], &filetype) >= 0)
+"        execute 'h '.expand('<cword>')
+"    else
+"        call CocAction('doHover')
+"    endif
+"endfunction
 " Automatically closing braces
 inoremap {<CR> {<CR>}<Esc>ko<tab>
 inoremap [<CR> [<CR>]<Esc>ko<tab>
 inoremap (<CR> (<CR>)<Esc>ko<tab>
 let python_highlight_all = 1
+
+command! -bang -nargs=* Search call fzf#vim#grep('git grep --line-number '.shellescape(<q-args>), 0)
+let g:netrw_banner=0
