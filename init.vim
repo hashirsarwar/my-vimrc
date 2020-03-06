@@ -33,7 +33,7 @@ set clipboard=unnamedplus
 tnoremap jj <C-\><C-n>
 inoremap jj <ESC>
 noremap <C-p> <esc>:Files<CR>
-noremap <C-n> <esc>:15Lexplore<CR>
+noremap <C-n> <esc>:Lexplore<CR>
 command! E Explore
 command! BD bp | bd #
 command! T 6sp|:terminal
