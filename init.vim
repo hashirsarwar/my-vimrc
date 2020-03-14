@@ -35,6 +35,7 @@ inoremap jj <ESC>
 noremap <C-p> <esc>:Files<CR>
 noremap <C-n> <esc>:15Lexplore<CR>
 command! E Explore
+command! S Search
 command! BD bp | bd #
 command! T 6sp|:terminal
 au BufRead,BufNewFile *.hbs setfiletype html
