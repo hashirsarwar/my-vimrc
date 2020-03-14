@@ -1,20 +1,20 @@
-" NVIM v0.4.x required
+" v0.4.x required
 call plug#begin()
 Plug 'airblade/vim-gitgutter'
 Plug 'ap/vim-buftabline'
-Plug 'tpope/vim-fugitive'
 " Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'shougo/deoplete.nvim'
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
 Plug 'pangloss/vim-javascript'
-Plug 'kh3phr3n/python-syntax'
 Plug 'gruvbox-community/gruvbox'
+Plug 'raimondi/delimitmate'
 call plug#end()
 let g:gruvbox_italic=1
 let g:gruvbox_contrast_dark = 'hard'
 let g:gruvbox_invert_selection = 0
 colorscheme gruvbox
+set background=dark
 set nohlsearch
 set cursorline
 set hidden
@@ -33,7 +33,7 @@ set clipboard=unnamedplus
 tnoremap jj <C-\><C-n>
 inoremap jj <ESC>
 noremap <C-p> <esc>:Files<CR>
-noremap <C-n> <esc>:Lexplore<CR>
+noremap <C-n> <esc>:15Lexplore<CR>
 command! E Explore
 command! BD bp | bd #
 command! T 6sp|:terminal
@@ -81,10 +81,8 @@ endfunction
 "    endif
 "endfunction
 " Automatically closing braces
-inoremap {<CR> {<CR>}<Esc>ko<tab>
-inoremap [<CR> [<CR>]<Esc>ko<tab>
-inoremap (<CR> (<CR>)<Esc>ko<tab>
-let python_highlight_all = 1
-
+let g:deoplete#enable_at_startup = 1
 command! -bang -nargs=* Search call fzf#vim#grep('git grep --line-number '.shellescape(<q-args>), 0)
 let g:netrw_banner=0
+let delimitMate_expand_cr = 1
+let delimitMate_expand_space = 1
