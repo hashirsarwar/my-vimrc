@@ -1,4 +1,3 @@
-" v0.4.x required
 call plug#begin()
 Plug 'airblade/vim-gitgutter'
 " Plug 'neoclide/coc.nvim', {'branch': 'release'}
