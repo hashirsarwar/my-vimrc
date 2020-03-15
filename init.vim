@@ -1,32 +1,23 @@
 " v0.4.x required
 call plug#begin()
 Plug 'airblade/vim-gitgutter'
-Plug 'ap/vim-buftabline'
 " Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'shougo/deoplete.nvim'
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
 Plug 'pangloss/vim-javascript'
-Plug 'gruvbox-community/gruvbox'
 Plug 'raimondi/delimitmate'
 call plug#end()
-let g:gruvbox_italic=1
-let g:gruvbox_contrast_dark = 'hard'
-let g:gruvbox_invert_selection = 0
-colorscheme gruvbox
-set background=dark
-set nohlsearch
 set cursorline
-set hidden
 set nowrap
 set number
 set tabstop=4
 set shiftwidth=4
 set expandtab
+set termguicolors
 set smarttab
 set updatetime=250
 set ignorecase
-set termguicolors
 set noshowmode
 set splitbelow
 set clipboard=unnamedplus
@@ -35,11 +26,10 @@ inoremap jj <ESC>
 noremap <C-p> <esc>:Files<CR>
 noremap <C-n> <esc>:15Lexplore<CR>
 command! E Explore
-command! S Search
 command! BD bp | bd #
 command! T 6sp|:terminal
 au BufRead,BufNewFile *.hbs setfiletype html
-au TermOpen * setlocal nonumber norelativenumber nocursorline nobuflisted
+au TermOpen * setlocal nonumber norelativenumber nocursorline hidden
 "let g:coc_global_extensions = [
 "            \'coc-flow',
 "            \'coc-json',
@@ -49,7 +39,6 @@ au TermOpen * setlocal nonumber norelativenumber nocursorline nobuflisted
 "            \'coc-eslint',
 "            \'coc-python',
 "            \]
-" Install eslint
 let $FZF_DEFAULT_OPTS='--layout=reverse'
 let g:fzf_layout = { 'window': 'call CreateCenteredFloatingWindow()' }
 function! CreateCenteredFloatingWindow()
@@ -81,9 +70,8 @@ endfunction
 "        call CocAction('doHover')
 "    endif
 "endfunction
-" Automatically closing braces
 let g:deoplete#enable_at_startup = 1
-command! -bang -nargs=* Search call fzf#vim#grep('git grep --line-number '.shellescape(<q-args>), 0)
+command! -bang -nargs=* S call fzf#vim#grep('git grep --line-number '.shellescape(<q-args>), 0)
 let g:netrw_banner=0
 let delimitMate_expand_cr = 1
-let delimitMate_expand_space = 1
+let delimitMate_expand_space = 1 
