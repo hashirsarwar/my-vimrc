@@ -1,7 +1,7 @@
 call plug#begin()
 Plug 'airblade/vim-gitgutter'
 " Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'shougo/deoplete.nvim'
+Plug 'shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
 Plug 'pangloss/vim-javascript'
