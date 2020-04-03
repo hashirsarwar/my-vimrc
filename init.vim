@@ -1,5 +1,5 @@
 call plug#begin()
-Plug 'shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'lifepillar/vim-mucomplete'
 Plug 'pangloss/vim-javascript'
 Plug 'tpope/vim-fugitive'
 Plug 'ctrlpvim/ctrlp.vim'
@@ -19,6 +19,9 @@ set smarttab
 set ignorecase
 set noshowmode
 set clipboard=unnamedplus
+set completeopt+=menuone
+set completeopt+=noselect
+set completeopt-=preview
 color jellybeans
 tnoremap jj <C-\><C-n>
 inoremap jj <ESC>
@@ -26,7 +29,6 @@ noremap <C-n> <esc>:15Lexplore<CR>
 command! BD bp | bd #
 command! T belowright 6split|:terminal
 au TermOpen * setlocal nonumber norelativenumber hidden
-let g:deoplete#enable_at_startup = 1
 let g:netrw_banner=0
 let g:ctrlp_regexp = 1
 let g:lightline = {'colorscheme':'jellybeans','active':{'left':[['mode','paste'],['gitbranch','readonly','filename','modified']]},'component_function':{'gitbranch':'FugitiveHead','filename':'LightlineFilename'}}
