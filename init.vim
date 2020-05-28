@@ -45,3 +45,4 @@ function! LightlineFilename()
   endif
   return expand('%')
 endfunction
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
