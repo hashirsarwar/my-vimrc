@@ -34,9 +34,6 @@ let g:netrw_banner=0
 let g:ctrlp_regexp = 1
 color jellybeans
 let g:lightline = {'colorscheme':'jellybeans','active':{'left':[['mode','paste'],['gitbranch','readonly','filename','modified']]},'component_function':{'gitbranch':'FugitiveHead','filename':'LightlineFilename'}}
-inoremap {<CR> {<CR>}<Esc>ko<tab>
-inoremap [<CR> [<CR>]<Esc>ko<tab>
-inoremap (<CR> (<CR>)<Esc>ko<tab>
 let g:deoplete#enable_at_startup = 1
 function! LightlineFilename()
   let root = fnamemodify(get(b:, 'git_dir'), ':h')
