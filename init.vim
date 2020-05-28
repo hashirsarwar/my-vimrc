@@ -8,6 +8,7 @@ Plug 'nanotech/jellybeans.vim'
 Plug 'itchyny/lightline.vim'
 Plug 'alvan/vim-closetag'
 Plug 'ap/vim-buftabline'
+Plug 'raimondi/delimitmate'
 call plug#end()
 set cursorline
 set number
@@ -46,3 +47,5 @@ function! LightlineFilename()
   return expand('%')
 endfunction
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+let g:delimitMate_expand_cr = 1
+let g:delimitMate_expand_space = 1
